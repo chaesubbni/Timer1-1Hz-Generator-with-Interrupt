@@ -1,0 +1,621 @@
+
+Timer_TM1637.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000c  00800100  000003be  00000452  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000003be  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000002  0080010c  0080010c  0000045e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000045e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000490  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000050  00000000  00000000  000004d0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000ac3  00000000  00000000  00000520  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000771  00000000  00000000  00000fe3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000458  00000000  00000000  00001754  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000bc  00000000  00000000  00001bac  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000042a  00000000  00000000  00001c68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000003bf  00000000  00000000  00002092  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000040  00000000  00000000  00002451  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 87 01 	jmp	0x30e	; 0x30e <__vector_11>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ee eb       	ldi	r30, 0xBE	; 190
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 30       	cpi	r26, 0x0C	; 12
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	ac e0       	ldi	r26, 0x0C	; 12
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	ae 30       	cpi	r26, 0x0E	; 14
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 ae 01 	call	0x35c	; 0x35c <main>
+  9e:	0c 94 dd 01 	jmp	0x3ba	; 0x3ba <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <tm1637_start>:
+// 1. TM1637 하위 통신 함수 (Bit-banging)
+// ==========================================
+
+void tm1637_start(void) {
+	// CLK가 High인 상태에서 DIO를 Low로 내리면 Start 조건
+	DDRD |= (1 << DIO_PIN); // DIO 출력 모드 (0V)
+  a6:	8a b1       	in	r24, 0x0a	; 10
+  a8:	88 60       	ori	r24, 0x08	; 8
+  aa:	8a b9       	out	0x0a, r24	; 10
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  ac:	8a e1       	ldi	r24, 0x1A	; 26
+  ae:	8a 95       	dec	r24
+  b0:	f1 f7       	brne	.-4      	; 0xae <tm1637_start+0x8>
+  b2:	00 c0       	rjmp	.+0      	; 0xb4 <tm1637_start+0xe>
+  b4:	08 95       	ret
+
+000000b6 <tm1637_stop>:
+	_delay_us(5);
+}
+
+void tm1637_stop(void) {
+	// CLK가 High일 때 DIO가 Low에서 High로 올라가면 Stop 조건
+	PORTD &= ~(1 << CLK_PIN); // CLK Low
+  b6:	8b b1       	in	r24, 0x0b	; 11
+  b8:	8b 7f       	andi	r24, 0xFB	; 251
+  ba:	8b b9       	out	0x0b, r24	; 11
+	DDRD |= (1 << DIO_PIN);   // DIO Low
+  bc:	8a b1       	in	r24, 0x0a	; 10
+  be:	88 60       	ori	r24, 0x08	; 8
+  c0:	8a b9       	out	0x0a, r24	; 10
+  c2:	8a e1       	ldi	r24, 0x1A	; 26
+  c4:	8a 95       	dec	r24
+  c6:	f1 f7       	brne	.-4      	; 0xc4 <tm1637_stop+0xe>
+  c8:	00 c0       	rjmp	.+0      	; 0xca <tm1637_stop+0x14>
+	_delay_us(5);
+	
+	PORTD |= (1 << CLK_PIN);  // CLK High
+  ca:	8b b1       	in	r24, 0x0b	; 11
+  cc:	84 60       	ori	r24, 0x04	; 4
+  ce:	8b b9       	out	0x0b, r24	; 11
+  d0:	8a e1       	ldi	r24, 0x1A	; 26
+  d2:	8a 95       	dec	r24
+  d4:	f1 f7       	brne	.-4      	; 0xd2 <tm1637_stop+0x1c>
+  d6:	00 c0       	rjmp	.+0      	; 0xd8 <tm1637_stop+0x22>
+	_delay_us(5);
+	
+	DDRD &= ~(1 << DIO_PIN);  // DIO High (입력 모드 전환으로 외부 풀업)
+  d8:	8a b1       	in	r24, 0x0a	; 10
+  da:	87 7f       	andi	r24, 0xF7	; 247
+  dc:	8a b9       	out	0x0a, r24	; 10
+  de:	8a e1       	ldi	r24, 0x1A	; 26
+  e0:	8a 95       	dec	r24
+  e2:	f1 f7       	brne	.-4      	; 0xe0 <tm1637_stop+0x2a>
+  e4:	00 c0       	rjmp	.+0      	; 0xe6 <tm1637_stop+0x30>
+  e6:	08 95       	ret
+
+000000e8 <tm1637_write_byte>:
+	_delay_us(5);
+}
+
+void tm1637_write_byte(unsigned char data) {
+	// 8비트 데이터 전송
+	for (unsigned char i = 0; i < 8; i++) {
+  e8:	90 e0       	ldi	r25, 0x00	; 0
+  ea:	20 c0       	rjmp	.+64     	; 0x12c <tm1637_write_byte+0x44>
+		PORTD &= ~(1 << CLK_PIN); // CLK Low
+  ec:	2b b1       	in	r18, 0x0b	; 11
+  ee:	2b 7f       	andi	r18, 0xFB	; 251
+  f0:	2b b9       	out	0x0b, r18	; 11
+		
+		if ((data >> i) & 0x01) {
+  f2:	28 2f       	mov	r18, r24
+  f4:	30 e0       	ldi	r19, 0x00	; 0
+  f6:	09 2e       	mov	r0, r25
+  f8:	02 c0       	rjmp	.+4      	; 0xfe <tm1637_write_byte+0x16>
+  fa:	35 95       	asr	r19
+  fc:	27 95       	ror	r18
+  fe:	0a 94       	dec	r0
+ 100:	e2 f7       	brpl	.-8      	; 0xfa <tm1637_write_byte+0x12>
+ 102:	20 ff       	sbrs	r18, 0
+ 104:	04 c0       	rjmp	.+8      	; 0x10e <tm1637_write_byte+0x26>
+			DDRD &= ~(1 << DIO_PIN); // 1: 입력 모드 (High-Z -> 외부 풀업 5V)
+ 106:	2a b1       	in	r18, 0x0a	; 10
+ 108:	27 7f       	andi	r18, 0xF7	; 247
+ 10a:	2a b9       	out	0x0a, r18	; 10
+ 10c:	03 c0       	rjmp	.+6      	; 0x114 <tm1637_write_byte+0x2c>
+			} else {
+			DDRD |= (1 << DIO_PIN);  // 0: 출력 모드 (GND 스위치 ON -> 0V)
+ 10e:	2a b1       	in	r18, 0x0a	; 10
+ 110:	28 60       	ori	r18, 0x08	; 8
+ 112:	2a b9       	out	0x0a, r18	; 10
+ 114:	2a e1       	ldi	r18, 0x1A	; 26
+ 116:	2a 95       	dec	r18
+ 118:	f1 f7       	brne	.-4      	; 0x116 <tm1637_write_byte+0x2e>
+ 11a:	00 c0       	rjmp	.+0      	; 0x11c <tm1637_write_byte+0x34>
+		}
+		_delay_us(5);
+		
+		PORTD |= (1 << CLK_PIN); // CLK High (TM1637이 데이터 래치)
+ 11c:	2b b1       	in	r18, 0x0b	; 11
+ 11e:	24 60       	ori	r18, 0x04	; 4
+ 120:	2b b9       	out	0x0b, r18	; 11
+ 122:	2a e1       	ldi	r18, 0x1A	; 26
+ 124:	2a 95       	dec	r18
+ 126:	f1 f7       	brne	.-4      	; 0x124 <tm1637_write_byte+0x3c>
+ 128:	00 c0       	rjmp	.+0      	; 0x12a <tm1637_write_byte+0x42>
+	_delay_us(5);
+}
+
+void tm1637_write_byte(unsigned char data) {
+	// 8비트 데이터 전송
+	for (unsigned char i = 0; i < 8; i++) {
+ 12a:	9f 5f       	subi	r25, 0xFF	; 255
+ 12c:	98 30       	cpi	r25, 0x08	; 8
+ 12e:	f0 f2       	brcs	.-68     	; 0xec <tm1637_write_byte+0x4>
+		PORTD |= (1 << CLK_PIN); // CLK High (TM1637이 데이터 래치)
+		_delay_us(5);
+	}
+	
+	// 9번째 클럭: ACK 수신 및 무시 (타이밍만 맞춤)
+	PORTD &= ~(1 << CLK_PIN); // CLK Low
+ 130:	8b b1       	in	r24, 0x0b	; 11
+ 132:	8b 7f       	andi	r24, 0xFB	; 251
+ 134:	8b b9       	out	0x0b, r24	; 11
+	DDRD &= ~(1 << DIO_PIN);  // MCU는 DIO 입력 모드로 전환하여 핀을 놔줌
+ 136:	8a b1       	in	r24, 0x0a	; 10
+ 138:	87 7f       	andi	r24, 0xF7	; 247
+ 13a:	8a b9       	out	0x0a, r24	; 10
+ 13c:	8a e1       	ldi	r24, 0x1A	; 26
+ 13e:	8a 95       	dec	r24
+ 140:	f1 f7       	brne	.-4      	; 0x13e <tm1637_write_byte+0x56>
+ 142:	00 c0       	rjmp	.+0      	; 0x144 <tm1637_write_byte+0x5c>
+	_delay_us(5);
+	
+	PORTD |= (1 << CLK_PIN); // CLK High
+ 144:	8b b1       	in	r24, 0x0b	; 11
+ 146:	84 60       	ori	r24, 0x04	; 4
+ 148:	8b b9       	out	0x0b, r24	; 11
+ 14a:	2a e1       	ldi	r18, 0x1A	; 26
+ 14c:	2a 95       	dec	r18
+ 14e:	f1 f7       	brne	.-4      	; 0x14c <tm1637_write_byte+0x64>
+ 150:	00 c0       	rjmp	.+0      	; 0x152 <tm1637_write_byte+0x6a>
+ 152:	08 95       	ret
+
+00000154 <tm1637_display>:
+
+// ==========================================
+// 2. TM1637 상위 제어 함수
+// ==========================================
+
+void tm1637_display(unsigned int num) {
+ 154:	0f 93       	push	r16
+ 156:	1f 93       	push	r17
+ 158:	cf 93       	push	r28
+ 15a:	df 93       	push	r29
+ 15c:	00 d0       	rcall	.+0      	; 0x15e <tm1637_display+0xa>
+ 15e:	00 d0       	rcall	.+0      	; 0x160 <tm1637_display+0xc>
+ 160:	cd b7       	in	r28, 0x3d	; 61
+ 162:	de b7       	in	r29, 0x3e	; 62
+ 164:	ac 01       	movw	r20, r24
+	// 4자리 숫자를 각 자리수별로 분리하여 패턴 매핑
+	unsigned char digits[4];
+	digits[0] = digit_table[(num / 1000) % 10];
+ 166:	9c 01       	movw	r18, r24
+ 168:	36 95       	lsr	r19
+ 16a:	27 95       	ror	r18
+ 16c:	36 95       	lsr	r19
+ 16e:	27 95       	ror	r18
+ 170:	36 95       	lsr	r19
+ 172:	27 95       	ror	r18
+ 174:	a5 ec       	ldi	r26, 0xC5	; 197
+ 176:	b0 e2       	ldi	r27, 0x20	; 32
+ 178:	0e 94 ce 01 	call	0x39c	; 0x39c <__umulhisi3>
+ 17c:	fc 01       	movw	r30, r24
+ 17e:	f2 95       	swap	r31
+ 180:	e2 95       	swap	r30
+ 182:	ef 70       	andi	r30, 0x0F	; 15
+ 184:	ef 27       	eor	r30, r31
+ 186:	ff 70       	andi	r31, 0x0F	; 15
+ 188:	ef 27       	eor	r30, r31
+ 18a:	9f 01       	movw	r18, r30
+ 18c:	ad ec       	ldi	r26, 0xCD	; 205
+ 18e:	bc ec       	ldi	r27, 0xCC	; 204
+ 190:	0e 94 ce 01 	call	0x39c	; 0x39c <__umulhisi3>
+ 194:	96 95       	lsr	r25
+ 196:	87 95       	ror	r24
+ 198:	96 95       	lsr	r25
+ 19a:	87 95       	ror	r24
+ 19c:	96 95       	lsr	r25
+ 19e:	87 95       	ror	r24
+ 1a0:	9c 01       	movw	r18, r24
+ 1a2:	22 0f       	add	r18, r18
+ 1a4:	33 1f       	adc	r19, r19
+ 1a6:	88 0f       	add	r24, r24
+ 1a8:	99 1f       	adc	r25, r25
+ 1aa:	88 0f       	add	r24, r24
+ 1ac:	99 1f       	adc	r25, r25
+ 1ae:	88 0f       	add	r24, r24
+ 1b0:	99 1f       	adc	r25, r25
+ 1b2:	82 0f       	add	r24, r18
+ 1b4:	93 1f       	adc	r25, r19
+ 1b6:	9f 01       	movw	r18, r30
+ 1b8:	28 1b       	sub	r18, r24
+ 1ba:	39 0b       	sbc	r19, r25
+ 1bc:	f9 01       	movw	r30, r18
+ 1be:	ef 5f       	subi	r30, 0xFF	; 255
+ 1c0:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1c2:	80 81       	ld	r24, Z
+ 1c4:	89 83       	std	Y+1, r24	; 0x01
+	digits[1] = digit_table[(num / 100) % 10];
+ 1c6:	9a 01       	movw	r18, r20
+ 1c8:	36 95       	lsr	r19
+ 1ca:	27 95       	ror	r18
+ 1cc:	36 95       	lsr	r19
+ 1ce:	27 95       	ror	r18
+ 1d0:	ab e7       	ldi	r26, 0x7B	; 123
+ 1d2:	b4 e1       	ldi	r27, 0x14	; 20
+ 1d4:	0e 94 ce 01 	call	0x39c	; 0x39c <__umulhisi3>
+ 1d8:	fc 01       	movw	r30, r24
+ 1da:	f6 95       	lsr	r31
+ 1dc:	e7 95       	ror	r30
+ 1de:	9f 01       	movw	r18, r30
+ 1e0:	ad ec       	ldi	r26, 0xCD	; 205
+ 1e2:	bc ec       	ldi	r27, 0xCC	; 204
+ 1e4:	0e 94 ce 01 	call	0x39c	; 0x39c <__umulhisi3>
+ 1e8:	96 95       	lsr	r25
+ 1ea:	87 95       	ror	r24
+ 1ec:	96 95       	lsr	r25
+ 1ee:	87 95       	ror	r24
+ 1f0:	96 95       	lsr	r25
+ 1f2:	87 95       	ror	r24
+ 1f4:	9c 01       	movw	r18, r24
+ 1f6:	22 0f       	add	r18, r18
+ 1f8:	33 1f       	adc	r19, r19
+ 1fa:	88 0f       	add	r24, r24
+ 1fc:	99 1f       	adc	r25, r25
+ 1fe:	88 0f       	add	r24, r24
+ 200:	99 1f       	adc	r25, r25
+ 202:	88 0f       	add	r24, r24
+ 204:	99 1f       	adc	r25, r25
+ 206:	82 0f       	add	r24, r18
+ 208:	93 1f       	adc	r25, r19
+ 20a:	9f 01       	movw	r18, r30
+ 20c:	28 1b       	sub	r18, r24
+ 20e:	39 0b       	sbc	r19, r25
+ 210:	f9 01       	movw	r30, r18
+ 212:	ef 5f       	subi	r30, 0xFF	; 255
+ 214:	fe 4f       	sbci	r31, 0xFE	; 254
+ 216:	80 81       	ld	r24, Z
+ 218:	8a 83       	std	Y+2, r24	; 0x02
+	digits[2] = digit_table[(num / 10) % 10];
+ 21a:	9a 01       	movw	r18, r20
+ 21c:	0e 94 ce 01 	call	0x39c	; 0x39c <__umulhisi3>
+ 220:	fc 01       	movw	r30, r24
+ 222:	f6 95       	lsr	r31
+ 224:	e7 95       	ror	r30
+ 226:	f6 95       	lsr	r31
+ 228:	e7 95       	ror	r30
+ 22a:	f6 95       	lsr	r31
+ 22c:	e7 95       	ror	r30
+ 22e:	9f 01       	movw	r18, r30
+ 230:	0e 94 ce 01 	call	0x39c	; 0x39c <__umulhisi3>
+ 234:	96 95       	lsr	r25
+ 236:	87 95       	ror	r24
+ 238:	96 95       	lsr	r25
+ 23a:	87 95       	ror	r24
+ 23c:	96 95       	lsr	r25
+ 23e:	87 95       	ror	r24
+ 240:	9c 01       	movw	r18, r24
+ 242:	22 0f       	add	r18, r18
+ 244:	33 1f       	adc	r19, r19
+ 246:	88 0f       	add	r24, r24
+ 248:	99 1f       	adc	r25, r25
+ 24a:	88 0f       	add	r24, r24
+ 24c:	99 1f       	adc	r25, r25
+ 24e:	88 0f       	add	r24, r24
+ 250:	99 1f       	adc	r25, r25
+ 252:	82 0f       	add	r24, r18
+ 254:	93 1f       	adc	r25, r19
+ 256:	9f 01       	movw	r18, r30
+ 258:	28 1b       	sub	r18, r24
+ 25a:	39 0b       	sbc	r19, r25
+ 25c:	d9 01       	movw	r26, r18
+ 25e:	af 5f       	subi	r26, 0xFF	; 255
+ 260:	be 4f       	sbci	r27, 0xFE	; 254
+ 262:	8c 91       	ld	r24, X
+ 264:	8b 83       	std	Y+3, r24	; 0x03
+	digits[3] = digit_table[num % 10];
+ 266:	cf 01       	movw	r24, r30
+ 268:	88 0f       	add	r24, r24
+ 26a:	99 1f       	adc	r25, r25
+ 26c:	ee 0f       	add	r30, r30
+ 26e:	ff 1f       	adc	r31, r31
+ 270:	ee 0f       	add	r30, r30
+ 272:	ff 1f       	adc	r31, r31
+ 274:	ee 0f       	add	r30, r30
+ 276:	ff 1f       	adc	r31, r31
+ 278:	e8 0f       	add	r30, r24
+ 27a:	f9 1f       	adc	r31, r25
+ 27c:	4e 1b       	sub	r20, r30
+ 27e:	5f 0b       	sbc	r21, r31
+ 280:	fa 01       	movw	r30, r20
+ 282:	ef 5f       	subi	r30, 0xFF	; 255
+ 284:	fe 4f       	sbci	r31, 0xFE	; 254
+ 286:	80 81       	ld	r24, Z
+ 288:	8c 83       	std	Y+4, r24	; 0x04
+
+	// Command 1: 데이터 기록 모드, 자동 주소 증가
+	tm1637_start();
+ 28a:	0e 94 53 00 	call	0xa6	; 0xa6 <tm1637_start>
+	tm1637_write_byte(0x40);
+ 28e:	80 e4       	ldi	r24, 0x40	; 64
+ 290:	0e 94 74 00 	call	0xe8	; 0xe8 <tm1637_write_byte>
+	tm1637_stop();
+ 294:	0e 94 5b 00 	call	0xb6	; 0xb6 <tm1637_stop>
+
+	// Command 2: 첫 번째 주소(0xC0) 설정 후 연속 4바이트 전송
+	tm1637_start();
+ 298:	0e 94 53 00 	call	0xa6	; 0xa6 <tm1637_start>
+	tm1637_write_byte(0xC0);
+ 29c:	80 ec       	ldi	r24, 0xC0	; 192
+ 29e:	0e 94 74 00 	call	0xe8	; 0xe8 <tm1637_write_byte>
+	for (int i = 0; i < 4; i++) {
+ 2a2:	00 e0       	ldi	r16, 0x00	; 0
+ 2a4:	10 e0       	ldi	r17, 0x00	; 0
+ 2a6:	0b c0       	rjmp	.+22     	; 0x2be <tm1637_display+0x16a>
+		tm1637_write_byte(digits[i]);
+ 2a8:	e1 e0       	ldi	r30, 0x01	; 1
+ 2aa:	f0 e0       	ldi	r31, 0x00	; 0
+ 2ac:	ec 0f       	add	r30, r28
+ 2ae:	fd 1f       	adc	r31, r29
+ 2b0:	e0 0f       	add	r30, r16
+ 2b2:	f1 1f       	adc	r31, r17
+ 2b4:	80 81       	ld	r24, Z
+ 2b6:	0e 94 74 00 	call	0xe8	; 0xe8 <tm1637_write_byte>
+	tm1637_stop();
+
+	// Command 2: 첫 번째 주소(0xC0) 설정 후 연속 4바이트 전송
+	tm1637_start();
+	tm1637_write_byte(0xC0);
+	for (int i = 0; i < 4; i++) {
+ 2ba:	0f 5f       	subi	r16, 0xFF	; 255
+ 2bc:	1f 4f       	sbci	r17, 0xFF	; 255
+ 2be:	04 30       	cpi	r16, 0x04	; 4
+ 2c0:	11 05       	cpc	r17, r1
+ 2c2:	94 f3       	brlt	.-28     	; 0x2a8 <tm1637_display+0x154>
+		tm1637_write_byte(digits[i]);
+	}
+	tm1637_stop();
+ 2c4:	0e 94 5b 00 	call	0xb6	; 0xb6 <tm1637_stop>
+
+	// Command 3: 디스플레이 ON 및 밝기 설정 (0x8F = 최대 밝기)
+	tm1637_start();
+ 2c8:	0e 94 53 00 	call	0xa6	; 0xa6 <tm1637_start>
+	tm1637_write_byte(0x8F);
+ 2cc:	8f e8       	ldi	r24, 0x8F	; 143
+ 2ce:	0e 94 74 00 	call	0xe8	; 0xe8 <tm1637_write_byte>
+	tm1637_stop();
+ 2d2:	0e 94 5b 00 	call	0xb6	; 0xb6 <tm1637_stop>
+}
+ 2d6:	0f 90       	pop	r0
+ 2d8:	0f 90       	pop	r0
+ 2da:	0f 90       	pop	r0
+ 2dc:	0f 90       	pop	r0
+ 2de:	df 91       	pop	r29
+ 2e0:	cf 91       	pop	r28
+ 2e2:	1f 91       	pop	r17
+ 2e4:	0f 91       	pop	r16
+ 2e6:	08 95       	ret
+
+000002e8 <timer1_init>:
+// ==========================================
+// 3. 타이머 및 인터럽트
+// ==========================================
+
+void timer1_init(void) {
+	TCCR1A = 0x00; // 일반 포트 동작
+ 2e8:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7f8080>
+	
+	// CTC 모드(WGM12=1), 분주비 1024 (CS12=1, CS10=1)
+	TCCR1B |= (1 << WGM12) | (1 << CS12) | (1 << CS10);
+ 2ec:	e1 e8       	ldi	r30, 0x81	; 129
+ 2ee:	f0 e0       	ldi	r31, 0x00	; 0
+ 2f0:	80 81       	ld	r24, Z
+ 2f2:	8d 60       	ori	r24, 0x0D	; 13
+ 2f4:	80 83       	st	Z, r24
+	
+	// 16MHz / 1024 = 15625Hz. 1초를 만들기 위한 비교값: 15625 - 1 = 15624
+	OCR1A = 15624;
+ 2f6:	88 e0       	ldi	r24, 0x08	; 8
+ 2f8:	9d e3       	ldi	r25, 0x3D	; 61
+ 2fa:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 2fe:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+	
+	// Timer1 Compare Match A 인터럽트 활성화
+	TIMSK1 |= (1 << OCIE1A);
+ 302:	ef e6       	ldi	r30, 0x6F	; 111
+ 304:	f0 e0       	ldi	r31, 0x00	; 0
+ 306:	80 81       	ld	r24, Z
+ 308:	82 60       	ori	r24, 0x02	; 2
+ 30a:	80 83       	st	Z, r24
+ 30c:	08 95       	ret
+
+0000030e <__vector_11>:
+}
+
+ISR(TIMER1_COMPA_vect) {
+ 30e:	1f 92       	push	r1
+ 310:	0f 92       	push	r0
+ 312:	0f b6       	in	r0, 0x3f	; 63
+ 314:	0f 92       	push	r0
+ 316:	11 24       	eor	r1, r1
+ 318:	2f 93       	push	r18
+ 31a:	8f 93       	push	r24
+ 31c:	9f 93       	push	r25
+	display_value++; // 1초마다 값 증가
+ 31e:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <__data_end>
+ 322:	90 91 0d 01 	lds	r25, 0x010D	; 0x80010d <__data_end+0x1>
+ 326:	01 96       	adiw	r24, 0x01	; 1
+ 328:	90 93 0d 01 	sts	0x010D, r25	; 0x80010d <__data_end+0x1>
+ 32c:	80 93 0c 01 	sts	0x010C, r24	; 0x80010c <__data_end>
+	if (display_value > 9999) {
+ 330:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <__data_end>
+ 334:	90 91 0d 01 	lds	r25, 0x010D	; 0x80010d <__data_end+0x1>
+ 338:	80 31       	cpi	r24, 0x10	; 16
+ 33a:	97 42       	sbci	r25, 0x27	; 39
+ 33c:	20 f0       	brcs	.+8      	; 0x346 <__vector_11+0x38>
+		display_value = 0; // 4자리를 넘어가면 리셋
+ 33e:	10 92 0d 01 	sts	0x010D, r1	; 0x80010d <__data_end+0x1>
+ 342:	10 92 0c 01 	sts	0x010C, r1	; 0x80010c <__data_end>
+	}
+	update_flag = 1; // 메인 루프에 업데이트 지시
+ 346:	81 e0       	ldi	r24, 0x01	; 1
+ 348:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+}
+ 34c:	9f 91       	pop	r25
+ 34e:	8f 91       	pop	r24
+ 350:	2f 91       	pop	r18
+ 352:	0f 90       	pop	r0
+ 354:	0f be       	out	0x3f, r0	; 63
+ 356:	0f 90       	pop	r0
+ 358:	1f 90       	pop	r1
+ 35a:	18 95       	reti
+
+0000035c <main>:
+// 4. 메인 함수
+// ==========================================
+
+int main(void) {
+	// I/O 핀 초기화
+	PORTD |= (1 << CLK_PIN);
+ 35c:	8b b1       	in	r24, 0x0b	; 11
+ 35e:	84 60       	ori	r24, 0x04	; 4
+ 360:	8b b9       	out	0x0b, r24	; 11
+	PORTD &= ~(1 << DIO_PIN); // 내부 풀업 끄기
+ 362:	8b b1       	in	r24, 0x0b	; 11
+ 364:	87 7f       	andi	r24, 0xF7	; 247
+ 366:	8b b9       	out	0x0b, r24	; 11
+	DDRD |= (1 << CLK_PIN);
+ 368:	8a b1       	in	r24, 0x0a	; 10
+ 36a:	84 60       	ori	r24, 0x04	; 4
+ 36c:	8a b9       	out	0x0a, r24	; 10
+	DDRD &= ~(1 << DIO_PIN);  // DIO 핀 입력(High-Z) 상태로 시작
+ 36e:	8a b1       	in	r24, 0x0a	; 10
+ 370:	87 7f       	andi	r24, 0xF7	; 247
+ 372:	8a b9       	out	0x0a, r24	; 10
+ 374:	8a e1       	ldi	r24, 0x1A	; 26
+ 376:	8a 95       	dec	r24
+ 378:	f1 f7       	brne	.-4      	; 0x376 <main+0x1a>
+ 37a:	00 c0       	rjmp	.+0      	; 0x37c <main+0x20>
+	_delay_us(5);
+	
+	timer1_init(); // 하드웨어 타이머 설정
+ 37c:	0e 94 74 01 	call	0x2e8	; 0x2e8 <timer1_init>
+	sei();         // 글로벌 인터럽트 활성화
+ 380:	78 94       	sei
+
+	while(1) {
+		// 인터럽트에서 플래그가 켜졌을 때만 I/O 통신 실행
+		if (update_flag) {
+ 382:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 386:	88 23       	and	r24, r24
+ 388:	e1 f3       	breq	.-8      	; 0x382 <main+0x26>
+			update_flag = 0; // 플래그 초기화
+ 38a:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+			tm1637_display(display_value); // 계산된 딜레이 기반의 Custom 함수 실행
+ 38e:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <__data_end>
+ 392:	90 91 0d 01 	lds	r25, 0x010D	; 0x80010d <__data_end+0x1>
+ 396:	0e 94 aa 00 	call	0x154	; 0x154 <tm1637_display>
+ 39a:	f3 cf       	rjmp	.-26     	; 0x382 <main+0x26>
+
+0000039c <__umulhisi3>:
+ 39c:	a2 9f       	mul	r26, r18
+ 39e:	b0 01       	movw	r22, r0
+ 3a0:	b3 9f       	mul	r27, r19
+ 3a2:	c0 01       	movw	r24, r0
+ 3a4:	a3 9f       	mul	r26, r19
+ 3a6:	70 0d       	add	r23, r0
+ 3a8:	81 1d       	adc	r24, r1
+ 3aa:	11 24       	eor	r1, r1
+ 3ac:	91 1d       	adc	r25, r1
+ 3ae:	b2 9f       	mul	r27, r18
+ 3b0:	70 0d       	add	r23, r0
+ 3b2:	81 1d       	adc	r24, r1
+ 3b4:	11 24       	eor	r1, r1
+ 3b6:	91 1d       	adc	r25, r1
+ 3b8:	08 95       	ret
+
+000003ba <_exit>:
+ 3ba:	f8 94       	cli
+
+000003bc <__stop_program>:
+ 3bc:	ff cf       	rjmp	.-2      	; 0x3bc <__stop_program>
