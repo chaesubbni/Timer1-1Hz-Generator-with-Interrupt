@@ -1,4 +1,4 @@
-# Timer1-1Hz-Generator
+# Timer1-1Hz-Generator-with-Interrupt
 본 프로젝트는 ATmega328P의 16비트 하드웨어 타이머를 활용하여, 메인 루프의 간섭이나 소프트웨어 딜레이 없이 하드웨어적으로 정확한 1초(1Hz) 타임 베이스를 생성하는 프로젝트입니다.
 단순히 delay() 함수로 시간을 때우는 것이 아니라, 16MHz 시스템 클럭을 Prescaler하고 비교 매치 레지스터를 정밀하게 계산하여, CPU 자원을 낭비하지 않는 인터럽트 기반의 실시간 시스템을 밑바닥부터 설계했습니다.
 TP1637 protocol은 제 github self-protocol-tp1637에 정리되어 있어 거기서 확인하시면 됩니다.
