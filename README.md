@@ -3,6 +3,12 @@
 단순히 delay() 함수로 시간을 때우는 것이 아니라, 16MHz 시스템 클럭을 Prescaler하고 비교 매치 레지스터를 정밀하게 계산하여, CPU 자원을 낭비하지 않는 인터럽트 기반의 실시간 시스템을 밑바닥부터 설계했습니다.
 TP1637 protocol은 제 github self-protocol-tp1637에 정리되어 있어 거기서 확인하시면 됩니다.
 
+
+https://github.com/user-attachments/assets/8c278bcd-1a92-43ce-a17b-6c1850d01b98
+
+
+
+
 ## Project Overview
 1. 16비트 타이머(Timer1)의 정밀 설계
   8비트 타이머의 한계를 넘어, 그릇이 큰 16비트 타이머(Timer1)를 사용하여 단 한 번의 하드웨어 사이클로 1초를 구현했습니다.
